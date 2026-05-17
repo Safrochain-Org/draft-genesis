@@ -29,19 +29,19 @@ Please also paste the file's **SHA-256** in the message so we can confirm we rec
 
 ## Status — find your validator
 
-The two SF Foundation gentxs are already valid and will form the block-1 set. The seven below are rejected and need a fresh signature.
+The two SF Foundation gentxs are already valid and will form the block-1 set. The seven below are rejected and need a fresh signature. **Click your moniker** to download your original gentx.
 
-| # | Validator   | Status                                              | Original gentx |
-| :-: | :--------- | :-------------------------------------------------- | :------------- |
-| 1 | safro-validator-1 | ✅ Accepted (block-1 validator)              | — (foundation) |
-| 2 | safro-validator-2 | ✅ Accepted (block-1 validator)              | — (foundation) |
-| 3 | **Winnode**       | ❌ Rejected — `max_change_rate` + `delegator_address` — **awaiting re-sign** | [`gentx-0ac3a067…`](./othersGenesis/gentx-0ac3a0672fb9a91b5651dbea198e5209d57d45ce.json) |
-| 4 | **NodeStake**     | ❌ Rejected — `delegator_address` — **awaiting re-sign** | [`gentx-NodeStake.json`](./othersGenesis/gentx-NodeStake.json) |
-| 5 | **VALIDARIOS**    | ❌ Rejected — `delegator_address` — **awaiting re-sign** | [`gentx-1adee57b…`](./othersGenesis/gentx-1adee57b2f70d1759b8b05330b757ed31c94655a.json) |
-| 6 | **catsmile**      | ❌ Rejected — `delegator_address` — **awaiting re-sign** | [`gentx-fbe6e37c…`](./othersGenesis/gentx-fbe6e37cec0acbf9c310bcb5a753c5bc6064a94a.json) |
-| 7 | **HusoNode**      | ❌ Rejected — `delegator_address` — **awaiting re-sign** | [`gentx-35b4137a…`](./othersGenesis/gentx-35b4137ae4011298e46629b5f820ca26257410ba.json) |
-| 8 | **Vinjan.Inc**    | ❌ Rejected — `delegator_address` — **awaiting re-sign** | [`gentx-b7a2c40d…`](./othersGenesis/gentx-b7a2c40d3e24f859649f995889904c7bb23a5b5c.json) |
-| 9 | **lehuukhoa**     | ❌ Rejected — `delegator_address` — **awaiting re-sign** | [`gentx-ab6de7a0…`](./othersGenesis/gentx-ab6de7a06dbb514d22a070db111c6fb4751b9710.json) |
+| Moniker | Issues | Status |
+| :------ | :----- | :----- |
+| safro-validator-1 | — | ✅ Accepted (block-1 validator) |
+| safro-validator-2 | — | ✅ Accepted (block-1 validator) |
+| [**Winnode**](./othersGenesis/gentx-0ac3a0672fb9a91b5651dbea198e5209d57d45ce.json) | `delegator_address` + `commission.max_change_rate` (0.50 → 0.05) | ❌ Awaiting re-sign |
+| [**NodeStake**](./othersGenesis/gentx-NodeStake.json) | `delegator_address` | ❌ Awaiting re-sign |
+| [**VALIDARIOS**](./othersGenesis/gentx-1adee57b2f70d1759b8b05330b757ed31c94655a.json) | `delegator_address` | ❌ Awaiting re-sign |
+| [**catsmile**](./othersGenesis/gentx-fbe6e37cec0acbf9c310bcb5a753c5bc6064a94a.json) | `delegator_address` | ❌ Awaiting re-sign |
+| [**HusoNode**](./othersGenesis/gentx-35b4137ae4011298e46629b5f820ca26257410ba.json) | `delegator_address` | ❌ Awaiting re-sign |
+| [**Vinjan.Inc**](./othersGenesis/gentx-b7a2c40d3e24f859649f995889904c7bb23a5b5c.json) | `delegator_address` | ❌ Awaiting re-sign |
+| [**lehuukhoa**](./othersGenesis/gentx-ab6de7a06dbb514d22a070db111c6fb4751b9710.json) | `delegator_address` | ❌ Awaiting re-sign |
 
 ---
 
@@ -75,7 +75,7 @@ The fix is the same for everyone: populate `delegator_address` with a real, non-
 
 ## Before you start — checklist
 
-1. **The same machine** you used the first time, ideally — it already has your operator key and your consensus key (`priv_validator_key.json`). If you re-sign from a different machine, you must import the same operator key into the new keyring **and** make sure your consensus pubkey in the new gentx still matches the one in your original file (see the *Per-validator reference* below).
+1. **The same machine** you used the first time, ideally — it already has your operator key and your consensus key (`priv_validator_key.json`). If you re-sign from a different machine, you must import the same operator key into the new keyring **and** make sure the consensus pubkey in your `priv_validator_key.json` matches the one already embedded in your original gentx (extract it with `jq -r '.body.messages[0].pubkey.key' gentx-original.json`).
 2. **`safrochaind v0.2.2`** installed:
    ```bash
    safrochaind version
@@ -87,7 +87,14 @@ The fix is the same for everyone: populate `delegator_address` with a real, non-
    ```bash
    safrochaind keys list --keyring-backend <BACKEND>
    ```
-   You should see your key. The address it shows must match the **Operator account (delegator)** value listed in the *Per-validator reference* for your validator.
+   You should see your key. To make sure it is the **same** key you used the first time, compare its pubkey to the one already embedded in your original gentx:
+   ```bash
+   safrochaind keys show <KEY_NAME> -p --keyring-backend <BACKEND>
+   # Expected: a JSON line whose "key" field equals
+   #   .auth_info.signer_infos[0].public_key.key  in your original gentx
+   jq -r '.auth_info.signer_infos[0].public_key.key' gentx-original.json
+   ```
+   The two base64 strings must match.
 
 ---
 
@@ -128,7 +135,7 @@ OPERATOR_DELEG=$(safrochaind keys show <KEY_NAME> -a --keyring-backend <BACKEND>
 echo "Operator account: $OPERATOR_DELEG"
 ```
 
-**Cross-check this against your row in the *Per-validator reference* below — it must match exactly.** If it does not, you are using the wrong key.
+**Sanity check.** `$OPERATOR_DELEG` must be the `addr_safro1…` form of your `addr_safrovaloper1…`. Same 20-byte hash, different bech32 prefix — both are derivable from the same operator key. If your key returns a totally unrelated address, you're using the wrong key.
 
 ### Step A.3 — Patch the body
 
@@ -185,7 +192,7 @@ safrochaind init "<YOUR_MONIKER>" --chain-id safrochain-1 --home "$HOME_GEN"
 
 ### Step B.2 — Bring in your operator key
 
-You must use the **same** operator key whose pubkey already appears in your original gentx — i.e. the key that controls the `addr_safro1…` operator account listed in the *Per-validator reference* below. Otherwise we will not be able to merge your file (the operator account in our genesis is bound to that specific public key).
+You must use the **same** operator key whose pubkey already appears in your original gentx — i.e. the key whose secp256k1 pubkey equals `auth_info.signer_infos[0].public_key.key` in your downloaded gentx. Otherwise we will not be able to merge your file (the operator account in our genesis is bound to that specific public key).
 
 ```bash
 # If your key already exists in another keyring, import it into HOME_GEN's keyring:
@@ -195,7 +202,7 @@ safrochaind keys add <KEY_NAME> --recover --home "$HOME_GEN" --keyring-backend <
 
 ### Step B.3 — Bring in your existing consensus key
 
-This is critical. Your **consensus** key is the ed25519 key your running validator node uses to sign blocks (it lives at `<your-node-home>/config/priv_validator_key.json`). The pubkey is what appears in `body.messages[0].pubkey` of your original gentx — for your validator it must be the value listed in the *Per-validator reference* below.
+This is critical. Your **consensus** key is the ed25519 key your running validator node uses to sign blocks (it lives at `<your-node-home>/config/priv_validator_key.json`). The pubkey is what appears in `body.messages[0].pubkey.key` of your original gentx — that exact value is what we have registered for your validator.
 
 If you re-init a fresh home, `safrochaind` will generate a **new** ed25519 key by default — that is the wrong key, and the chain will reject your gentx because the consensus pubkey will not match what we already know about your validator. So copy your existing one in **before** generating the gentx:
 
@@ -206,12 +213,13 @@ install -m 600 \
   "$HOME_GEN/config/priv_validator_key.json"
 ```
 
-You can confirm the right pubkey is in place:
+You can confirm the right pubkey is in place by comparing it to your downloaded original gentx:
 
 ```bash
-jq '.pub_key.value' "$HOME_GEN/config/priv_validator_key.json"
-# This base64 string must equal the consensus pubkey in your row of the
-# Per-validator reference below.
+jq -r '.pub_key.value' "$HOME_GEN/config/priv_validator_key.json"
+jq -r '.body.messages[0].pubkey.key'   gentx-original.json
+# These two base64 strings MUST match. If they differ, your priv_validator_key.json
+# is from a different machine — locate the one used to produce your original gentx.
 ```
 
 ### Step B.4 — Generate the unsigned gentx
@@ -273,7 +281,8 @@ safrochaind tx sign unsigned-patched.json \
 Whichever path you took, run these two checks before sending:
 
 ```bash
-# 1. Eyeball the important fields. They should match your row in the Per-validator reference.
+# 1. Eyeball the important fields. They should match your original gentx
+#    (with delegator_address now populated, and max_change_rate corrected if you're Winnode).
 jq '.body.messages[0] | {
   moniker: .description.moniker,
   delegator_address,
@@ -298,115 +307,11 @@ We will run `safrochaind genesis collect-gentxs` + a full InitGenesis simulation
 
 ---
 
-## Per-validator reference
-
-Use this section to confirm you are working on **your own** validator. The **Operator account (delegator)** is the address that must end up in `delegator_address` after your edit. The **Consensus pubkey** is the ed25519 key your node already uses to sign blocks — your `priv_validator_key.json` must contain this same pubkey for your gentx to be merge-able.
-
-### Winnode
-
-| Field | Value |
-| :--- | :--- |
-| Moniker | `Winnode` |
-| Validator address | `addr_safrovaloper1a6ve2escz8h4ws3ttelfp54av2wwvty6f4xq8z` |
-| **Operator account (delegator)** | **`addr_safro1a6ve2escz8h4ws3ttelfp54av2wwvty6ltdckj`** |
-| Operator pubkey (secp256k1) | `AiA4hH2V35ht1mnDlK/Sj9iIUX4gaEhSrtx7y1WEVQPI` |
-| Consensus pubkey (ed25519) | `j+11d9SQhQuW2R7jf0rxbcPcjR9OrFZMDsulUGdJp2w=` |
-| P2P memo | `0ac3a0672fb9a91b5651dbea198e5209d57d45ce@152.53.3.28:26656` |
-| Source file | [`gentx-0ac3a0672fb9a91b5651dbea198e5209d57d45ce.json`](./othersGenesis/gentx-0ac3a0672fb9a91b5651dbea198e5209d57d45ce.json) |
-| Output filename | `gentx-fixed-winnode.json` |
-| Fixes required | `delegator_address` **and** `commission.max_change_rate` 0.50 → 0.05 |
-
-### NodeStake
-
-| Field | Value |
-| :--- | :--- |
-| Moniker | `NodeStake` |
-| Validator address | `addr_safrovaloper1sdlfp8n5fcfa7qw7770ngqs02k876gf6m749ly` |
-| **Operator account (delegator)** | **`addr_safro1sdlfp8n5fcfa7qw7770ngqs02k876gf6dq7aw5`** |
-| Operator pubkey (secp256k1) | `A+eyho6x+1fau44sspfSWqLKo22/mXDix/iW9IHioCb5` |
-| Consensus pubkey (ed25519) | `yz7hgt7vv4Fpp6dX+X2k/BVAb2my1TaXQ0MCeygfIvg=` |
-| P2P memo | `fa2747f0b706efe596d6a7c4c28b88f2c2cd303f@185.194.177.201:26656` |
-| Source file | [`gentx-NodeStake.json`](./othersGenesis/gentx-NodeStake.json) |
-| Output filename | `gentx-fixed-nodestake.json` |
-| Fixes required | `delegator_address` |
-
-### VALIDARIOS
-
-| Field | Value |
-| :--- | :--- |
-| Moniker | `VALIDARIOS` |
-| Validator address | `addr_safrovaloper1yftmqycaa4td0x6zzgpwcpqg8ze988tdyvgcpc` |
-| **Operator account (delegator)** | **`addr_safro1yftmqycaa4td0x6zzgpwcpqg8ze988tdjjrqsg`** |
-| Operator pubkey (secp256k1) | `Awp2eBvBq1mcZVAOnHSGLp6fDg0ROI8J91IueNzGBFZb` |
-| Consensus pubkey (ed25519) | `Jrh0nETSthiqgpJTIsZAkQJ2WlBPd7FhQYZJ3CakOY8=` |
-| P2P memo | `1adee57b2f70d1759b8b05330b757ed31c94655a@135.181.112.230:26656` |
-| Source file | [`gentx-1adee57b2f70d1759b8b05330b757ed31c94655a.json`](./othersGenesis/gentx-1adee57b2f70d1759b8b05330b757ed31c94655a.json) |
-| Output filename | `gentx-fixed-validarios.json` |
-| Fixes required | `delegator_address` |
-
-### catsmile
-
-| Field | Value |
-| :--- | :--- |
-| Moniker | `catsmile` |
-| Validator address | `addr_safrovaloper1n5wh99ntprx89656y3rtlarldxsztgpfwkr37e` |
-| **Operator account (delegator)** | **`addr_safro1n5wh99ntprx89656y3rtlarldxsztgpfcggf0f`** |
-| Operator pubkey (secp256k1) | `A386aVobUv8HluadK+0REowRJF+Vl+oGucWxtAb8PxQr` |
-| Consensus pubkey (ed25519) | `7GpzkW24WyC7t+Kj5DtmdettHNQwec6+PAF1HOEWVJI=` |
-| P2P memo | `fbe6e37cec0acbf9c310bcb5a753c5bc6064a94a@152.53.120.117:26656` |
-| Source file | [`gentx-fbe6e37cec0acbf9c310bcb5a753c5bc6064a94a.json`](./othersGenesis/gentx-fbe6e37cec0acbf9c310bcb5a753c5bc6064a94a.json) |
-| Output filename | `gentx-fixed-catsmile.json` |
-| Fixes required | `delegator_address` |
-
-### HusoNode
-
-| Field | Value |
-| :--- | :--- |
-| Moniker | `HusoNode` |
-| Validator address | `addr_safrovaloper1v7tgzrhgfhlfk07u24cy76pktq2qqxqylzydet` |
-| **Operator account (delegator)** | **`addr_safro1v7tgzrhgfhlfk07u24cy76pktq2qqxqyfu04gm`** |
-| Operator pubkey (secp256k1) | `A+L6UzFcEvwOglpdyIlQPTI+kXwE467l5s8l/iel6X3+` |
-| Consensus pubkey (ed25519) | `EdMLjyWo2QtalOX+SpHaCnBUgHExxSCtgajN6lMHpvs=` |
-| P2P memo | `35b4137ae4011298e46629b5f820ca26257410ba@65.109.63.160:26656` |
-| Source file | [`gentx-35b4137ae4011298e46629b5f820ca26257410ba.json`](./othersGenesis/gentx-35b4137ae4011298e46629b5f820ca26257410ba.json) |
-| Output filename | `gentx-fixed-husonode.json` |
-| Fixes required | `delegator_address` |
-
-### Vinjan.Inc
-
-| Field | Value |
-| :--- | :--- |
-| Moniker | `Vinjan.Inc` |
-| Validator address | `addr_safrovaloper155sufte0atrxla4duvx94rh3s7u5k8cqyn9lm9` |
-| **Operator account (delegator)** | **`addr_safro155sufte0atrxla4duvx94rh3s7u5k8cqjdw824`** |
-| Operator pubkey (secp256k1) | `A9apk95jVi0rmyjf0tfMcTAUa67qHK4cWV1eZOl/GAHq` |
-| Consensus pubkey (ed25519) | `vIfyVKtXPyoZbN3ZtmcPcE357hHCY2jkZgFH1f+GXYk=` |
-| P2P memo | `b7a2c40d3e24f859649f995889904c7bb23a5b5c@65.21.234.111:26656` |
-| Source file | [`gentx-b7a2c40d3e24f859649f995889904c7bb23a5b5c.json`](./othersGenesis/gentx-b7a2c40d3e24f859649f995889904c7bb23a5b5c.json) |
-| Output filename | `gentx-fixed-vinjan.json` |
-| Fixes required | `delegator_address` |
-
-### lehuukhoa
-
-| Field | Value |
-| :--- | :--- |
-| Moniker | `lehuukhoa` |
-| Validator address | `addr_safrovaloper1p9nru77vj63uw25hx68hp4s9zrmr8cl4lpnqmt` |
-| **Operator account (delegator)** | **`addr_safro1p9nru77vj63uw25hx68hp4s9zrmr8cl4flcc2m`** |
-| Operator pubkey (secp256k1) | `A4QEiH1v6Y9zJcEEyBXf1B/e271cHe5pUEBoAMjgOomM` |
-| Consensus pubkey (ed25519) | `Tv8GkqqCcg1ebgtLBsQH8r12LXcZ/Gy/4aYFZQEE3tQ=` |
-| P2P memo | `ab6de7a06dbb514d22a070db111c6fb4751b9710@84.247.185.147:26656` |
-| Source file | [`gentx-ab6de7a06dbb514d22a070db111c6fb4751b9710.json`](./othersGenesis/gentx-ab6de7a06dbb514d22a070db111c6fb4751b9710.json) |
-| Output filename | `gentx-fixed-lehuukhoa.json` |
-| Fixes required | `delegator_address` |
-
----
-
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
 | :------ | :----------- | :-- |
-| `safrochaind keys show` returns a different address than the "Operator account" in your reference row | You're using the wrong key, or wrong keyring backend | Try other backends (`--keyring-backend file/os/test`), or import the right mnemonic. Your operator key is the secp256k1 one whose pubkey matches the **Operator pubkey** in your reference row. |
+| `safrochaind keys show <KEY> -p` returns a pubkey that does not match `auth_info.signer_infos[0].public_key.key` in your original gentx | You're using the wrong key, or wrong keyring backend | Try other backends (`--keyring-backend file/os/test`), or import the right mnemonic. Your operator key is the secp256k1 one whose pubkey matches your original gentx's signer pubkey. |
 | `tx sign` fails with `account sequence mismatch` | You forgot `--offline` | Re-run with `--offline --account-number 0 --sequence 0`. Genesis txs cannot query account state — they must use these fixed values. |
 | `tx sign` writes a file but the signature still does not validate | You signed with a different key than the one you registered originally | The consensus pubkey is bound to the operator account in our genesis. Use the same secp256k1 key you used the first time. |
 | You generated the gentx on a fresh machine and the consensus pubkey changed | A new `priv_validator_key.json` was auto-generated | Copy your real `priv_validator_key.json` from your running node into the signing home **before** `genesis gentx` — see Path B Step B.3. |
