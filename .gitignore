@@ -1,0 +1,12 @@
+# Secrets — never commit
+*.secret
+*.mnemonic
+team-mnemonic*
+
+# Genesis snapshots / backups
+genesis.json.bak*
+*.bak.*
+
+# Internal drafts that never go on GitHub
+operator-messages/
+dao-delegate-manifest.json
