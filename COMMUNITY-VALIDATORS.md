@@ -2,7 +2,7 @@
 
 # Safrochain — Community Validator gentx Repair
 
-**A step-by-step guide for the community validators who still need to re-sign their gentx for `safrochain-1`. NodeStake, catsmile, Winnode, and Vinjan.Inc have already submitted compliant gentxs and are baked into the launch genesis — 3 more to go.**
+**A step-by-step guide for the community validators who still need to re-sign their gentx for `safrochain-1`. NodeStake, catsmile, Winnode, Vinjan.Inc, and lehuukhoa have already submitted compliant gentxs and are baked into the launch genesis — 2 more to go.**
 
 [![Chain ID](https://img.shields.io/badge/chain--id-safrochain--1-1f6feb?style=for-the-badge)](#chain-parameters)
 [![Binary](https://img.shields.io/badge/safrochaind-v0.2.2-8957e5?style=for-the-badge)](#chain-parameters)
@@ -29,7 +29,7 @@ Please also paste the file's **SHA-256** in the message so we can confirm we rec
 
 ## Status — find your validator
 
-The two SF Foundation gentxs and the four community gentxs marked ✅ below are baked into the launch genesis (sha256 `da7c9be5ef09c32b3d23a18fe66bdbeb07fd7183d0f85f9cbbc5737c25457403`). The remaining three are rejected and need a fresh signature — your row links to your originally submitted gentx in case you want to inspect what was wrong.
+The two SF Foundation gentxs and the five community gentxs marked ✅ below are baked into the launch genesis (sha256 `3b660849c356b51fb99a9abb08e23f156df801e847c8634501faf4272dff70e2`). The remaining two are rejected and need a fresh signature — your row links to your originally submitted gentx in case you want to inspect what was wrong.
 
 | Moniker | Issues | Status |
 | :------ | :----- | :----- |
@@ -41,7 +41,7 @@ The two SF Foundation gentxs and the four community gentxs marked ✅ below are 
 | [**VALIDARIOS**](./othersGenesis/gentx-1adee57b2f70d1759b8b05330b757ed31c94655a.json) | `delegator_address` | ❌ Awaiting re-sign |
 | [**HusoNode**](./othersGenesis/gentx-35b4137ae4011298e46629b5f820ca26257410ba.json) | `delegator_address` | ❌ Awaiting re-sign |
 | [**Vinjan.Inc**](./othersGenesis/gentx-fixed-Vinjan.Inc.json) | re-signed with `delegator_address` populated (new operator + consensus key) | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1t0aw2zvghsdr7avfksgtsu090w8nvqpckefdsq` |
-| [**lehuukhoa**](./othersGenesis/gentx-ab6de7a06dbb514d22a070db111c6fb4751b9710.json) | `delegator_address` | ❌ Awaiting re-sign |
+| [**lehuukhoa**](./othersGenesis/gentx-fixed-lehuukhoa.json) | re-signed with `delegator_address` populated (new operator + consensus key) | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1d2qnc709usexrg9uyjxgfet6xy0vt8wv8jj6m4` |
 
 ---
 
