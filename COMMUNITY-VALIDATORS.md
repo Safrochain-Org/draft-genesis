@@ -29,7 +29,7 @@ Please also paste the file's **SHA-256** in the message so we can confirm we rec
 
 ## Status — find your validator
 
-The two SF Foundation gentxs and the six community gentxs marked ✅ below are baked into the launch genesis (sha256 `30860d19b02dad581167d754714f4dd15893313f315fe895fcf6d2bc5d6fa8d7`). Only **VALIDARIOS** still needs to re-sign — their row links to their originally submitted gentx in case they want to inspect what was wrong.
+The two SF Foundation gentxs and the six community gentxs marked ✅ below are baked into the launch genesis (sha256 `55c502be893c38be64d3f9d86926cfa788214a4ff3e573c28d2fe060766818df`). Only **VALIDARIOS** still needs to re-sign — their row links to their originally submitted gentx in case they want to inspect what was wrong.
 
 | Moniker | Issues | Status |
 | :------ | :----- | :----- |

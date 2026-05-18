@@ -1,6 +1,6 @@
 {
   "app_name": "safrochaind",
-  "app_version": "v0.1.0-1-gfbb961b",
+  "app_version": "v0.2.2",
   "genesis_time": "2026-04-18T15:44:32.803866Z",
   "chain_id": "safrochain-1",
   "initial_height": 1,
