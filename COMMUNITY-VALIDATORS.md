@@ -29,7 +29,7 @@ Please also paste the file's **SHA-256** in the message so we can confirm we rec
 
 ## Status — find your validator
 
-The two SF Foundation gentxs and the six community gentxs marked ✅ below are baked into the launch genesis (sha256 `7cc3c5bbdcfb27e766eae5f302cb23b95d0ab94b0f1cee0e5adf747d224fb16b`). Only **VALIDARIOS** still needs to re-sign — their row links to their originally submitted gentx in case they want to inspect what was wrong.
+The two SF Foundation gentxs and the six community gentxs marked ✅ below are baked into the launch genesis (sha256 `30860d19b02dad581167d754714f4dd15893313f315fe895fcf6d2bc5d6fa8d7`). Only **VALIDARIOS** still needs to re-sign — their row links to their originally submitted gentx in case they want to inspect what was wrong.
 
 | Moniker | Issues | Status |
 | :------ | :----- | :----- |
@@ -37,7 +37,7 @@ The two SF Foundation gentxs and the six community gentxs marked ✅ below are b
 | safro-validator-2 | — | ✅ Accepted (block-1 validator) |
 | [**NodeStake**](./othersGenesis/gentx-fixed-NodeStake.json) | re-signed with `delegator_address` populated | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1sdlfp8n5fcfa7qw7770ngqs02k876gf6m749ly` |
 | [**catsmile**](./othersGenesis/gentx-fixed-catsmile.json) | re-signed with `delegator_address` populated (new operator + consensus key) | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper13njz6aqmtwtu7vl4w0c6j7dvt7qj6t77vg6r9s` |
-| [**Winnode**](./othersGenesis/gentx-fixed-winnode.json) | re-signed with `delegator_address` populated and `commission.max_change_rate` lowered (0.50 → 0.05); consensus key rotated | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1a6ve2escz8h4ws3ttelfp54av2wwvty6f4xq8z` |
+| [**Winnode**](./othersGenesis/gentx-fixed-Winnode.json) | re-signed with `delegator_address` populated and `commission.max_change_rate` lowered (0.50 → 0.05); consensus key rotated | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1a6ve2escz8h4ws3ttelfp54av2wwvty6f4xq8z` |
 | [**VALIDARIOS**](./othersGenesis/gentx-1adee57b2f70d1759b8b05330b757ed31c94655a.json) | `delegator_address` | ❌ Awaiting re-sign |
 | [**HusoNode**](./othersGenesis/gentx-fixed-HusoNode.json) | re-signed with `delegator_address` populated (new operator + consensus key) | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1t5smj0hxatf05gqw3y75an02lhed7xqewjl3lq` |
 | [**Vinjan.Inc**](./othersGenesis/gentx-fixed-Vinjan.Inc.json) | re-signed with `delegator_address` populated (new operator + consensus key) | ✅ **Accepted** (block-1 validator) — `addr_safrovaloper1t0aw2zvghsdr7avfksgtsu090w8nvqpckefdsq` |

@@ -1057,8 +1057,7 @@
         "params": {
           "allowed_clients": [
             "06-solomachine",
-            "07-tendermint",
-            "08-wasm"
+            "07-tendermint"
           ]
         },
         "create_localhost": false,
@@ -1069,7 +1068,7 @@
         "client_connection_paths": [],
         "next_connection_sequence": "0",
         "params": {
-          "max_expected_time_per_block": "30000000000"
+          "max_expected_time_per_block": "15000000000"
         }
       },
       "channel_genesis": {
@@ -1099,7 +1098,7 @@
         "interchain_accounts": [],
         "ports": [],
         "params": {
-          "controller_enabled": false
+          "controller_enabled": true
         }
       },
       "host_genesis_state": {
@@ -1107,8 +1106,36 @@
         "interchain_accounts": [],
         "port": "icahost",
         "params": {
-          "host_enabled": false,
-          "allow_messages": []
+          "host_enabled": true,
+          "allow_messages": [
+            "/cosmos.bank.v1beta1.MsgSend",
+            "/cosmos.bank.v1beta1.MsgMultiSend",
+            "/cosmos.staking.v1beta1.MsgDelegate",
+            "/cosmos.staking.v1beta1.MsgUndelegate",
+            "/cosmos.staking.v1beta1.MsgBeginRedelegate",
+            "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation",
+            "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
+            "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
+            "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
+            "/cosmos.distribution.v1beta1.MsgFundCommunityPool",
+            "/cosmos.gov.v1.MsgVote",
+            "/cosmos.gov.v1.MsgVoteWeighted",
+            "/cosmos.gov.v1.MsgDeposit",
+            "/cosmos.gov.v1.MsgSubmitProposal",
+            "/cosmos.gov.v1beta1.MsgVote",
+            "/cosmos.gov.v1beta1.MsgVoteWeighted",
+            "/cosmos.gov.v1beta1.MsgDeposit",
+            "/cosmos.gov.v1beta1.MsgSubmitProposal",
+            "/cosmos.authz.v1beta1.MsgGrant",
+            "/cosmos.authz.v1beta1.MsgRevoke",
+            "/cosmos.authz.v1beta1.MsgExec",
+            "/cosmos.feegrant.v1beta1.MsgGrantAllowance",
+            "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
+            "/ibc.applications.transfer.v1.MsgTransfer",
+            "/cosmwasm.wasm.v1.MsgExecuteContract",
+            "/cosmwasm.wasm.v1.MsgInstantiateContract",
+            "/cosmwasm.wasm.v1.MsgInstantiateContract2"
+          ]
         }
       }
     },
@@ -1116,7 +1143,32 @@
       "host_port": "icqhost",
       "params": {
         "host_enabled": true,
-        "allow_queries": []
+        "allow_queries": [
+          "/cosmos.auth.v1beta1.Query/Account",
+          "/cosmos.auth.v1beta1.Query/Accounts",
+          "/cosmos.auth.v1beta1.Query/Params",
+          "/cosmos.bank.v1beta1.Query/Balance",
+          "/cosmos.bank.v1beta1.Query/AllBalances",
+          "/cosmos.bank.v1beta1.Query/SupplyOf",
+          "/cosmos.bank.v1beta1.Query/TotalSupply",
+          "/cosmos.bank.v1beta1.Query/Params",
+          "/cosmos.distribution.v1beta1.Query/DelegationRewards",
+          "/cosmos.distribution.v1beta1.Query/DelegationTotalRewards",
+          "/cosmos.distribution.v1beta1.Query/Params",
+          "/cosmos.gov.v1.Query/Proposal",
+          "/cosmos.gov.v1.Query/Vote",
+          "/cosmos.gov.v1.Query/Params",
+          "/cosmos.staking.v1beta1.Query/Delegation",
+          "/cosmos.staking.v1beta1.Query/DelegatorDelegations",
+          "/cosmos.staking.v1beta1.Query/UnbondingDelegation",
+          "/cosmos.staking.v1beta1.Query/DelegatorUnbondingDelegations",
+          "/cosmos.staking.v1beta1.Query/Validator",
+          "/cosmos.staking.v1beta1.Query/Validators",
+          "/cosmos.staking.v1beta1.Query/Params",
+          "/cosmwasm.wasm.v1.Query/SmartContractState",
+          "/cosmwasm.wasm.v1.Query/RawContractState",
+          "/cosmwasm.wasm.v1.Query/ContractInfo"
+        ]
       }
     },
     "mint": {
