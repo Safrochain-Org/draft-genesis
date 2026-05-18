@@ -7,7 +7,7 @@
 [![Chain ID](https://img.shields.io/badge/chain--id-safrochain--1-1f6feb?style=for-the-badge)](#chain-parameters)
 [![Denom](https://img.shields.io/badge/denom-usaf-8957e5?style=for-the-badge)](#chain-parameters)
 [![Supply](https://img.shields.io/badge/supply-1%2C000%2C000%2C000_SAF-2da44e?style=for-the-badge)](#tokenomics)
-[![Validators](https://img.shields.io/badge/genesis_validators-4-fb8500?style=for-the-badge)](#genesis-validators)
+[![Validators](https://img.shields.io/badge/genesis_validators-5-fb8500?style=for-the-badge)](#genesis-validators)
 [![Status](https://img.shields.io/badge/status-draft-d29922?style=for-the-badge)](#status)
 
 </div>
@@ -22,7 +22,7 @@
 | --- | --- |
 | **File** | [`genesis.json`](./genesis.json) |
 | **Size** | 40,987 bytes (≈ 40 KB) |
-| **SHA-256** | `17227648a1d8eafd34f6b866f531d80300e8757e0eb6dd0e3f7bac8015377611` |
+| **SHA-256** | `1700603e0a2aef59f432f82f57159b2fbfaf2709dd1ee96a173e9870d2bdde15` |
 | **Genesis time** | `2026-04-18T15:44:32.803866Z` |
 | **Initial height** | `1` |
 
@@ -81,7 +81,7 @@
 
 ## Genesis Validators
 
-The validator set at block 1 consists of the **2 Safrochain Foundation validators + 2 community validators** that re-signed their gentxs after the InitGenesis compliance review.
+The validator set at block 1 consists of the **2 Safrochain Foundation validators + 3 community validators** that re-signed their gentxs after the InitGenesis compliance review.
 
 | # | Moniker | Class | Self-stake | Commission | Max | Operator (valoper) |
 | :-- | :--- | :--- | ---: | ---: | ---: | :--- |
@@ -89,14 +89,14 @@ The validator set at block 1 consists of the **2 Safrochain Foundation validator
 | 2 | safro-validator-2 | Foundation | 50 000 SAF | 10 % | 20 % | `addr_safrovaloper1h2jy3sghpwevgw3cjwqk055ejwxn5ls3ur7c5q` |
 | 3 | **NodeStake** | Community | 10 000 SAF | 5 % | 20 % | `addr_safrovaloper1sdlfp8n5fcfa7qw7770ngqs02k876gf6m749ly` |
 | 4 | **catsmile** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper13njz6aqmtwtu7vl4w0c6j7dvt7qj6t77vg6r9s` |
+| 5 | **Winnode** | Community | 10 000 SAF | 5 % | 20 % | `addr_safrovaloper1a6ve2escz8h4ws3ttelfp54av2wwvty6f4xq8z` |
 
 ### Community validators expected post-launch
 
-The remaining 5 community operators are pre-funded with 10 000 SAF each in genesis, but their original gentxs failed compliance. They will join the network post-launch by submitting `MsgCreateValidator` after re-signing with the fixes below (or directly against the running chain):
+The remaining 4 community operators are pre-funded with 10 000 SAF each in genesis, but their original gentxs failed compliance. They will join the network post-launch by submitting `MsgCreateValidator` after re-signing with the fixes below (or directly against the running chain):
 
 | Moniker | Operator wallet (pre-funded, 10 000 SAF) | Issue with original gentx |
 | :--- | :--- | :--- |
-| Winnode | `addr_safro1a6ve2escz8h4ws3ttelfp54av2wwvty6ltdckj` | `commission.max_change_rate = 0.50` exceeds chain cap (≤ 0.05) |
 | VALIDARIOS | `addr_safro1yftmqycaa4td0x6zzgpwcpqg8ze988tdjjrqsg` | empty `delegator_address` field — re-sign with operator address set |
 | HusoNode | `addr_safro1v7tgzrhgfhlfk07u24cy76pktq2qqxqyfu04gm` | empty `delegator_address` field — re-sign with operator address set |
 | Vinjan.Inc | `addr_safro155sufte0atrxla4duvx94rh3s7u5k8cqjdw824` | empty `delegator_address` field — re-sign with operator address set |
@@ -117,7 +117,7 @@ curl -fsSL -o genesis.json \
 
 # 2. Verify integrity
 shasum -a 256 genesis.json
-# Expected: 17227648a1d8eafd34f6b866f531d80300e8757e0eb6dd0e3f7bac8015377611
+# Expected: 1700603e0a2aef59f432f82f57159b2fbfaf2709dd1ee96a173e9870d2bdde15
 
 # 3. Validate against safrochaind
 mkdir -p ~/.safrochain/config
