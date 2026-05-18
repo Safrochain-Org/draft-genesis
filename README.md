@@ -7,7 +7,7 @@
 [![Chain ID](https://img.shields.io/badge/chain--id-safrochain--1-1f6feb?style=for-the-badge)](#chain-parameters)
 [![Denom](https://img.shields.io/badge/denom-usaf-8957e5?style=for-the-badge)](#chain-parameters)
 [![Supply](https://img.shields.io/badge/supply-1%2C000%2C000%2C000_SAF-2da44e?style=for-the-badge)](#tokenomics)
-[![Validators](https://img.shields.io/badge/genesis_validators-2-fb8500?style=for-the-badge)](#genesis-validators)
+[![Validators](https://img.shields.io/badge/genesis_validators-4-fb8500?style=for-the-badge)](#genesis-validators)
 [![Status](https://img.shields.io/badge/status-draft-d29922?style=for-the-badge)](#status)
 
 </div>
@@ -22,7 +22,7 @@
 | --- | --- |
 | **File** | [`genesis.json`](./genesis.json) |
 | **Size** | 40,987 bytes (≈ 40 KB) |
-| **SHA-256** | `75be1984a1df8d5696bc4971a5a41bb04f374d6dcc79ce7395d6d73288da9c03` |
+| **SHA-256** | `17227648a1d8eafd34f6b866f531d80300e8757e0eb6dd0e3f7bac8015377611` |
 | **Genesis time** | `2026-04-18T15:44:32.803866Z` |
 | **Initial height** | `1` |
 
@@ -81,14 +81,28 @@
 
 ## Genesis Validators
 
-The validator set at block 1 consists of the **2 Safrochain Foundation validators**. The 7 community validators (NodeStake, Winnode, VALIDARIOS, catsmile, HusoNode, Vinjan.Inc, lehuukhoa) will join post-launch by submitting `MsgCreateValidator` transactions directly to the running chain — their submitted gentxs had `delegator_address` empty / `max_change_rate` out-of-policy, which the chain rejects at InitGenesis-time signature verification. Their operator wallets are pre-funded with 10 000 SAF each in genesis so they can self-stake the moment they join.
+The validator set at block 1 consists of the **2 Safrochain Foundation validators + 2 community validators** that re-signed their gentxs after the InitGenesis compliance review.
 
-| # | Moniker | Self-stake | Commission | Max | Operator (valoper) |
-| :-- | :--- | ---: | ---: | ---: | :--- |
-| 1 | safro-validator-1 | 50 000 SAF | 10 % | 20 % | `addr_safrovaloper1j9l9salsfwq83cf83zsg7wdhvc5p2f6xshlpzn` |
-| 2 | safro-validator-2 | 50 000 SAF | 10 % | 20 % | `addr_safrovaloper1h2jy3sghpwevgw3cjwqk055ejwxn5ls3ur7c5q` |
+| # | Moniker | Class | Self-stake | Commission | Max | Operator (valoper) |
+| :-- | :--- | :--- | ---: | ---: | ---: | :--- |
+| 1 | safro-validator-1 | Foundation | 50 000 SAF | 10 % | 20 % | `addr_safrovaloper1j9l9salsfwq83cf83zsg7wdhvc5p2f6xshlpzn` |
+| 2 | safro-validator-2 | Foundation | 50 000 SAF | 10 % | 20 % | `addr_safrovaloper1h2jy3sghpwevgw3cjwqk055ejwxn5ls3ur7c5q` |
+| 3 | **NodeStake** | Community | 10 000 SAF | 5 % | 20 % | `addr_safrovaloper1sdlfp8n5fcfa7qw7770ngqs02k876gf6m749ly` |
+| 4 | **catsmile** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper13njz6aqmtwtu7vl4w0c6j7dvt7qj6t77vg6r9s` |
 
-Both gentxs pass `safrochaind genesis collect-gentxs`, `safrochaind genesis validate`, and a clean `InitGenesis` simulation locally. The consensus pubkeys in the gentxs are the **production** ed25519 keys held by the running validator daemons and sharded across the 3 Horcrux cosigners (2-of-3 threshold).
+### Community validators expected post-launch
+
+The remaining 5 community operators are pre-funded with 10 000 SAF each in genesis, but their original gentxs failed compliance. They will join the network post-launch by submitting `MsgCreateValidator` after re-signing with the fixes below (or directly against the running chain):
+
+| Moniker | Operator wallet (pre-funded, 10 000 SAF) | Issue with original gentx |
+| :--- | :--- | :--- |
+| Winnode | `addr_safro1a6ve2escz8h4ws3ttelfp54av2wwvty6ltdckj` | `commission.max_change_rate = 0.50` exceeds chain cap (≤ 0.05) |
+| VALIDARIOS | `addr_safro1yftmqycaa4td0x6zzgpwcpqg8ze988tdjjrqsg` | empty `delegator_address` field — re-sign with operator address set |
+| HusoNode | `addr_safro1v7tgzrhgfhlfk07u24cy76pktq2qqxqyfu04gm` | empty `delegator_address` field — re-sign with operator address set |
+| Vinjan.Inc | `addr_safro155sufte0atrxla4duvx94rh3s7u5k8cqjdw824` | empty `delegator_address` field — re-sign with operator address set |
+| lehuukhoa | `addr_safro1p9nru77vj63uw25hx68hp4s9zrmr8cl4flcc2m` | empty `delegator_address` field — re-sign with operator address set |
+
+All 4 baked gentxs pass `safrochaind genesis collect-gentxs`, `safrochaind genesis validate`, and a clean `InitGenesis` simulation locally. The consensus pubkeys of the foundation validators are the **production** ed25519 keys held by the running daemons and sharded across the 3 Horcrux cosigners (2-of-3 threshold, one cluster per validator).
 
 ---
 
@@ -103,7 +117,7 @@ curl -fsSL -o genesis.json \
 
 # 2. Verify integrity
 shasum -a 256 genesis.json
-# Expected: 75be1984a1df8d5696bc4971a5a41bb04f374d6dcc79ce7395d6d73288da9c03
+# Expected: 17227648a1d8eafd34f6b866f531d80300e8757e0eb6dd0e3f7bac8015377611
 
 # 3. Validate against safrochaind
 mkdir -p ~/.safrochain/config
