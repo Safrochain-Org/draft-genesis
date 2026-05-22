@@ -42,8 +42,8 @@
 | **Voting period** | 7 days (`604800s`) — expedited 1 day |
 | **Min gov deposit** | 5 000 SAF (`5 000 000 000 usaf`) |
 | **Gov quorum** | 33.4 % |
-| **Min gas price** | `100 000 usaf` (global fee) |
-| **Inflation** | min 3 % · max 14 % · target bonded 67 % |
+| **Min gas price** | `0.1 usaf` (global fee) |
+| **Inflation** | min 2 % · max 12 % · target bonded 55 % |
 | **Slash — downtime** | 0.01 % · jail 1 h · window 10 000 blocks @ 80 % |
 | **Slash — double-sign** | 5 % |
 | **Evidence max age** | 14 days / 241 920 blocks |
