@@ -1,7 +1,7 @@
 {
   "app_name": "safrochaind",
   "app_version": "v0.2.2",
-  "genesis_time": "2026-04-18T15:44:32.803866Z",
+  "genesis_time": "2026-05-30T16:00:00.000000Z",
   "chain_id": "safrochain-1",
   "initial_height": 1,
   "app_hash": null,
@@ -18,86 +18,44 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro1puvzzwarzr62lvrcglyp4jlmcey3rt5k4vdldj",
+          "address": "addr_safro16lwzs2d07m9tz2nwae2tc9rc86zpv4drsz5m7q",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro1avruhnhgcudfjvz2786tp9atg2zr5flsrfv79t",
+          "address": "addr_safro10fy4hvlaf6g6c4893tj07gdv37qz2fcm7gydxy",
           "pub_key": null,
           "account_number": "1",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro1na0r7h9cp3u9df8ud06r2wu5ntnnkqzshlstyt",
+          "address": "addr_safro1h24zfcznc53yedq7wa85tcvpswyzv76wa3xvfg",
           "pub_key": null,
           "account_number": "2",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro1swx83204agh2vmz4jrfdntnsjftggnz3rs5ndv",
+          "address": "addr_safro18af0nuzkv6a8rffly03ntd2pruwqzanjsq0vkh",
           "pub_key": null,
           "account_number": "3",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro1mam5hdmcq2trnscr5p64x33aln7q0spme5ptmx",
+          "address": "addr_safro163n2nkd2knkjztpqvyg75qn32u7q73c4txmckl",
           "pub_key": null,
           "account_number": "4",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro16lwzs2d07m9tz2nwae2tc9rc86zpv4drsz5m7q",
-          "pub_key": null,
-          "account_number": "23",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro1vl07257z5hnyxv065cdnhaxhktdf7azwfzs262",
-          "pub_key": null,
-          "account_number": "24",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro10fy4hvlaf6g6c4893tj07gdv37qz2fcm7gydxy",
-          "pub_key": null,
-          "account_number": "25",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro1h24zfcznc53yedq7wa85tcvpswyzv76wa3xvfg",
-          "pub_key": null,
-          "account_number": "26",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro18af0nuzkv6a8rffly03ntd2pruwqzanjsq0vkh",
-          "pub_key": null,
-          "account_number": "27",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "addr_safro163n2nkd2knkjztpqvyg75qn32u7q73c4txmckl",
-          "pub_key": null,
-          "account_number": "28",
-          "sequence": "0"
-        },
-        {
-          "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1alz79jmck6qmn4t0zame3kcewuq4ek3avg56hn",
           "pub_key": null,
-          "account_number": "29",
+          "account_number": "5",
           "sequence": "0"
         },
         {
@@ -105,7 +63,7 @@
           "base_account": {
             "address": "addr_safro1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8ln9tz0",
             "pub_key": null,
-            "account_number": "22",
+            "account_number": "6",
             "sequence": "0"
           },
           "name": "distribution",
@@ -118,98 +76,98 @@
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1j9l9salsfwq83cf83zsg7wdhvc5p2f6xxf5enr",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "7",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1h2jy3sghpwevgw3cjwqk055ejwxn5ls32a4q9s",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "8",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1yftmqycaa4td0x6zzgpwcpqg8ze988tdjjrqsg",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "9",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1sdlfp8n5fcfa7qw7770ngqs02k876gf6dq7aw5",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "10",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1a6ve2escz8h4ws3ttelfp54av2wwvty6ltdckj",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "11",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1n5wh99ntprx89656y3rtlarldxsztgpfcggf0f",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "12",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1v7tgzrhgfhlfk07u24cy76pktq2qqxqyfu04gm",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "13",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro155sufte0atrxla4duvx94rh3s7u5k8cqjdw824",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "14",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1p9nru77vj63uw25hx68hp4s9zrmr8cl4flcc2m",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "15",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro16dp8qd3q40f3gqsc9wwcphu035usytx7m8886r",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "16",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro13njz6aqmtwtu7vl4w0c6j7dvt7qj6t776k3m5q",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "17",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1t0aw2zvghsdr7avfksgtsu090w8nvqpcq8z4ps",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "18",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1d2qnc709usexrg9uyjxgfet6xy0vt8wv3vez29",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "19",
           "sequence": "0"
         },
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "addr_safro1t5smj0hxatf05gqw3y75an02lhed7xqecv5fws",
           "pub_key": null,
-          "account_number": "0",
+          "account_number": "20",
           "sequence": "0"
         },
         {
@@ -218,7 +176,7 @@
             "base_account": {
               "address": "addr_safro182wjel3esl84vj47p44nhn3hhayj47q53fqwu2",
               "pub_key": null,
-              "account_number": "30",
+              "account_number": "21",
               "sequence": "0"
             },
             "original_vesting": [
@@ -229,9 +187,9 @@
             ],
             "delegated_free": [],
             "delegated_vesting": [],
-            "end_time": "1854287072"
+            "end_time": "1857916800"
           },
-          "start_time": "1776527072",
+          "start_time": "1780156800",
           "vesting_periods": [
             {
               "length": "18144000",
@@ -457,7 +415,7 @@
             "base_account": {
               "address": "addr_safro10wxl8s4rw4njmddnav8xnsz7v06e6k2evsedkj",
               "pub_key": null,
-              "account_number": "31",
+              "account_number": "22",
               "sequence": "0"
             },
             "original_vesting": [
@@ -468,9 +426,9 @@
             ],
             "delegated_free": [],
             "delegated_vesting": [],
-            "end_time": "1854287072"
+            "end_time": "1857916800"
           },
-          "start_time": "1776527072",
+          "start_time": "1780156800",
           "vesting_periods": [
             {
               "length": "18144000",
@@ -696,7 +654,7 @@
             "base_account": {
               "address": "addr_safro1g6f65xfnxpye8rdw28e8ca2ktpstfq9vj24ghh",
               "pub_key": null,
-              "account_number": "32",
+              "account_number": "23",
               "sequence": "0"
             },
             "original_vesting": [
@@ -707,9 +665,9 @@
             ],
             "delegated_free": [],
             "delegated_vesting": [],
-            "end_time": "1830959072"
+            "end_time": "1834588800"
           },
-          "start_time": "1784303072"
+          "start_time": "1787932800"
         },
         {
           "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
@@ -717,7 +675,7 @@
             "base_account": {
               "address": "addr_safro16ezjrjrmjz39mdpkc6tc0txty67yc3357g8fkr",
               "pub_key": null,
-              "account_number": "33",
+              "account_number": "24",
               "sequence": "0"
             },
             "original_vesting": [
@@ -728,9 +686,9 @@
             ],
             "delegated_free": [],
             "delegated_vesting": [],
-            "end_time": "1830959072"
+            "end_time": "1834588800"
           },
-          "start_time": "1784303072"
+          "start_time": "1787932800"
         },
         {
           "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
@@ -738,7 +696,7 @@
             "base_account": {
               "address": "addr_safro1sle08jvjrvykx56freurzx9c5297ksehxp0xgm",
               "pub_key": null,
-              "account_number": "34",
+              "account_number": "25",
               "sequence": "0"
             },
             "original_vesting": [
@@ -749,15 +707,204 @@
             ],
             "delegated_free": [],
             "delegated_vesting": [],
-            "end_time": "1830959072"
+            "end_time": "1834588800"
           },
-          "start_time": "1784303072"
+          "start_time": "1787932800"
         },
         {
           "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
           "base_vesting_account": {
             "base_account": {
               "address": "addr_safro1yj4dxyvtxt0f3tz6txxfqytv0jzpx2m5vswv7s",
+              "pub_key": null,
+              "account_number": "26",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "3000000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1834588800"
+          },
+          "start_time": "1787932800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro1d3lq60a9hhydfrzdyv9xykgaxsps3dv6rx60nx",
+              "pub_key": null,
+              "account_number": "27",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "1000000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1834588800"
+          },
+          "start_time": "1787932800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro1nzpqvg2z52aezr5u5acjxp9uzdsvhlkjrd7vey",
+              "pub_key": null,
+              "account_number": "28",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "1000000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1834588800"
+          },
+          "start_time": "1787932800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro12mdzzelfzh4hc80kgn68encc0lx8eud4ahq7vq",
+              "pub_key": null,
+              "account_number": "29",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "10500000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1842364800"
+          },
+          "start_time": "1795708800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro1mmn3z9qew8lf6dmtxv8y48cml9hg98fgj4fcpg",
+              "pub_key": null,
+              "account_number": "30",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "7500000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1842364800"
+          },
+          "start_time": "1795708800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro120yspdxqa6uuy4299yvs5d3wpkefad64t20d4s",
+              "pub_key": null,
+              "account_number": "31",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "1500000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1842364800"
+          },
+          "start_time": "1795708800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro16etla2cc09wmn0h9cylenfqpclkexj0pl2nwfn",
+              "pub_key": null,
+              "account_number": "32",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "1500000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1842364800"
+          },
+          "start_time": "1795708800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro1aulrkrqtue2zzjdmhuuv3p35j57uuqp4qvzqef",
+              "pub_key": null,
+              "account_number": "33",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "2000000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1842364800"
+          },
+          "start_time": "1795708800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro16f43zsg4zzp4fe5sx8u7syrq26rupuvlqg8u4v",
+              "pub_key": null,
+              "account_number": "34",
+              "sequence": "0"
+            },
+            "original_vesting": [
+              {
+                "denom": "usaf",
+                "amount": "4000000000000"
+              }
+            ],
+            "delegated_free": [],
+            "delegated_vesting": [],
+            "end_time": "1819036800"
+          },
+          "start_time": "1787932800"
+        },
+        {
+          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
+          "base_vesting_account": {
+            "base_account": {
+              "address": "addr_safro15gjq2p97yx4e27f557tw44tlsxzsuxpz7l45qg",
               "pub_key": null,
               "account_number": "35",
               "sequence": "0"
@@ -770,198 +917,9 @@
             ],
             "delegated_free": [],
             "delegated_vesting": [],
-            "end_time": "1830959072"
+            "end_time": "1819036800"
           },
-          "start_time": "1784303072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro1d3lq60a9hhydfrzdyv9xykgaxsps3dv6rx60nx",
-              "pub_key": null,
-              "account_number": "36",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "1000000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1830959072"
-          },
-          "start_time": "1784303072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro1nzpqvg2z52aezr5u5acjxp9uzdsvhlkjrd7vey",
-              "pub_key": null,
-              "account_number": "37",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "1000000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1830959072"
-          },
-          "start_time": "1784303072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro12mdzzelfzh4hc80kgn68encc0lx8eud4ahq7vq",
-              "pub_key": null,
-              "account_number": "38",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "10500000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1838735072"
-          },
-          "start_time": "1792079072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro1mmn3z9qew8lf6dmtxv8y48cml9hg98fgj4fcpg",
-              "pub_key": null,
-              "account_number": "39",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "7500000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1838735072"
-          },
-          "start_time": "1792079072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro120yspdxqa6uuy4299yvs5d3wpkefad64t20d4s",
-              "pub_key": null,
-              "account_number": "40",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "1500000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1838735072"
-          },
-          "start_time": "1792079072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro16etla2cc09wmn0h9cylenfqpclkexj0pl2nwfn",
-              "pub_key": null,
-              "account_number": "41",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "1500000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1838735072"
-          },
-          "start_time": "1792079072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro1aulrkrqtue2zzjdmhuuv3p35j57uuqp4qvzqef",
-              "pub_key": null,
-              "account_number": "42",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "2000000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1838735072"
-          },
-          "start_time": "1792079072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro16f43zsg4zzp4fe5sx8u7syrq26rupuvlqg8u4v",
-              "pub_key": null,
-              "account_number": "43",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "4000000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1815407072"
-          },
-          "start_time": "1784303072"
-        },
-        {
-          "@type": "/cosmos.vesting.v1beta1.ContinuousVestingAccount",
-          "base_vesting_account": {
-            "base_account": {
-              "address": "addr_safro15gjq2p97yx4e27f557tw44tlsxzsuxpz7l45qg",
-              "pub_key": null,
-              "account_number": "44",
-              "sequence": "0"
-            },
-            "original_vesting": [
-              {
-                "denom": "usaf",
-                "amount": "3000000000000"
-              }
-            ],
-            "delegated_free": [],
-            "delegated_vesting": [],
-            "end_time": "1815407072"
-          },
-          "start_time": "1784303072"
+          "start_time": "1787932800"
         }
       ]
     },
@@ -2135,8 +2093,8 @@
     "slashing": {
       "params": {
         "signed_blocks_window": "10000",
-        "min_signed_per_window": "0.800000000000000000",
-        "downtime_jail_duration": "3600s",
+        "min_signed_per_window": "0.500000000000000000",
+        "downtime_jail_duration": "600s",
         "slash_fraction_double_sign": "0.050000000000000000",
         "slash_fraction_downtime": "0.000100000000000000"
       },

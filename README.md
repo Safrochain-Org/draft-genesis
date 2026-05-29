@@ -7,7 +7,7 @@
 [![Chain ID](https://img.shields.io/badge/chain--id-safrochain--1-1f6feb?style=for-the-badge)](#chain-parameters)
 [![Denom](https://img.shields.io/badge/denom-usaf-8957e5?style=for-the-badge)](#chain-parameters)
 [![Supply](https://img.shields.io/badge/supply-1%2C000%2C000%2C000_SAF-2da44e?style=for-the-badge)](#tokenomics)
-[![Validators](https://img.shields.io/badge/genesis_validators-8-fb8500?style=for-the-badge)](#genesis-validators)
+[![Validators](https://img.shields.io/badge/genesis_validators-9-fb8500?style=for-the-badge)](#genesis-validators)
 [![Status](https://img.shields.io/badge/status-draft-d29922?style=for-the-badge)](#status)
 
 </div>
@@ -21,9 +21,9 @@
 | | |
 | --- | --- |
 | **File** | [`genesis.json`](./genesis.json) |
-| **Size** | 66,153 bytes (≈ 65 KB) |
-| **SHA-256** | `42caa89be2628edeb09dec2b4ae527930d0cd139eaa52c5979b8338c0ea19b08` |
-| **Genesis time** | `2026-04-18T15:44:32.803866Z` |
+| **Size** | 64,739 bytes (≈ 63 KB) |
+| **SHA-256** | `cf5c6514dd6ba9ded66469aea8fd53fa452cfcd719a6e890b88ba9c0fc649eb8` |
+| **Genesis time** | `2026-05-30T16:00:00.000000Z` |
 | **Initial height** | `1` |
 
 ---
@@ -42,9 +42,9 @@
 | **Voting period** | 7 days (`604800s`) — expedited 1 day |
 | **Min gov deposit** | 5 000 SAF (`5 000 000 000 usaf`) |
 | **Gov quorum** | 33.4 % |
-| **Min gas price** | `0.1 usaf` (global fee) |
-| **Inflation** | min 2 % · max 12 % · target bonded 55 % |
-| **Slash — downtime** | 0.01 % · jail 1 h · window 10 000 blocks @ 80 % |
+| **Min gas price** | `0.05 usaf` (global fee) |
+| **Inflation** | min 3 % · max 12 % · target bonded 55 % |
+| **Slash — downtime** | 0.01 % · jail 10 min · window 10 000 blocks @ 50 % |
 | **Slash — double-sign** | 5 % |
 | **Evidence max age** | 14 days / 241 920 blocks |
 | **Max block bytes** | 22 020 096 |
@@ -58,7 +58,7 @@
 
 | Allocation | Amount (SAF) | % of supply | Notes |
 | :--- | ---: | ---: | :--- |
-| **DAO Reserve** | 210 000 000 | 21 % | Governance & community-driven decisions. 170 K SAF earmarked to fund validator self-stake wallets at genesis; ~149 M SAF pre-delegated across the 9 genesis validators. Includes a 10 M SAF Developer Reserves residual moved from the Team pool, held under DAO control until specific contributors are designated. |
+| **DAO Reserve** | 210 000 000 | 21 % | Governance & community-driven decisions. ~135.76 M SAF delegated to the 8 manifested validators via post-launch `MsgDelegate` (see [Initial bonded stake](#initial-bonded-stake)). Includes a 10 M SAF Developer Reserves residual moved from the Team pool, held under DAO control until specific contributors are designated. |
 | **Community** | 150 000 000 | 15 % | Airdrops, missions, community rewards |
 | **Team** | 140 000 000 | 14 % | Cofounders (Dan Baruka, Gentil Samvura — 40 M each, 80 M total) hold `PeriodicVestingAccount`s (6 mo cliff + 24 mo monthly). All other 13 team members hold `ContinuousVestingAccount`s — linear release between `start_time` (= genesis + cliff) and `end_time`. Cliff/vest by group: Developers 3 mo + 18 mo, Management 6 mo + 18 mo, Advisors 3 mo + 12 mo. Gentil's Mgmt + Advisor allocations are merged into a single 10.5 M continuous account under the Management schedule. The 10 M Developer Reserves residual is parked on the DAO Reserve wallet. See [wallets-tokenomics.json](../wallets-tokenomics.json) for the per-member breakdown. |
 | **Ecosystem Development** | 150 000 000 | 15 % | Ecosystem growth and developer programs |
@@ -70,18 +70,21 @@
 
 ### Initial bonded stake
 
-| Source | Bonded at genesis |
+| Source | Bonded |
 | :--- | ---: |
 | Community validator self-delegations (7 × 10 K) | 70 000 SAF |
 | SF foundation validator self-delegations (2 × 50 K) | 100 000 SAF |
-| DAO Reserve delegations to all 9 validators | 149 079 999 SAF |
-| **Total bonded at block 1** | **≈ 149.25 M SAF (~14.9 % of supply)** |
+| **Total bonded at block 1** | **170 000 SAF** |
+| DAO Reserve `MsgDelegate` txs (8 entries in [`dao-delegate-manifest.json`](./dao-delegate-manifest.json)), broadcast post-launch | 135 757 093 SAF |
+| **Bonded once DAO delegations confirm (~block 5–10)** | **≈ 135.93 M SAF (~13.6 % of supply)** |
+
+The DAO Reserve delegations are **applied as live transactions immediately after launch**, not baked into genesis state. The runbook is in [`bin/apply-dao-delegations-postgenesis.sh`](../bin/apply-dao-delegations-postgenesis.sh) — it imports the `dao-reserve` key, waits until the chain is producing blocks, and broadcasts the 8 `MsgDelegate` txs in sequence. (Earlier drafts attempted to embed these delegations directly in `app_state.staking.delegations`, but the chain's `InitGenesis` ordering runs `staking` before `genutil`, so delegations to validators that gen_txs would later create produce a `validator does not exist` panic.)
 
 ---
 
 ## Genesis Validators
 
-The validator set at block 1 consists of the **2 Safrochain Foundation validators + 6 community validators** that re-signed their gentxs after the InitGenesis compliance review.
+The validator set at block 1 consists of the **2 Safrochain Foundation validators + 7 community validators** (all 9 gentxs baked into `app_state.genutil.gen_txs`).
 
 | # | Moniker | Class | Self-stake | Commission | Max | Operator (valoper) |
 | :-- | :--- | :--- | ---: | ---: | ---: | :--- |
@@ -93,16 +96,9 @@ The validator set at block 1 consists of the **2 Safrochain Foundation validator
 | 6 | **Vinjan.Inc** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper1t0aw2zvghsdr7avfksgtsu090w8nvqpckefdsq` |
 | 7 | **lehuukhoa** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper1d2qnc709usexrg9uyjxgfet6xy0vt8wv8jj6m4` |
 | 8 | **HusoNode** | Community | 10 000 SAF | 10 % | 20 % | `addr_safrovaloper1t5smj0hxatf05gqw3y75an02lhed7xqewjl3lq` |
+| 9 | **VALIDARIOS** | Community | 10 000 SAF | 5 % | 20 % | (operator: `addr_safro1yftmqycaa4td0x6zzgpwcpqg8ze988tdjjrqsg`) |
 
-### Community validators expected post-launch
-
-The last community operator is pre-funded with 10 000 SAF in genesis, but its original gentx failed compliance. They will join the network post-launch by submitting `MsgCreateValidator` after re-signing with the fix below (or directly against the running chain):
-
-| Moniker | Operator wallet (pre-funded, 10 000 SAF) | Issue with original gentx |
-| :--- | :--- | :--- |
-| VALIDARIOS | `addr_safro1yftmqycaa4td0x6zzgpwcpqg8ze988tdjjrqsg` | empty `delegator_address` field — re-sign with operator address set |
-
-All 4 baked gentxs pass `safrochaind genesis collect-gentxs`, `safrochaind genesis validate`, and a clean `InitGenesis` simulation locally. The consensus pubkeys of the foundation validators are the **production** ed25519 keys held by the running daemons and sharded across the 3 Horcrux cosigners (2-of-3 threshold, one cluster per validator).
+All 9 gentxs pass `safrochaind genesis collect-gentxs` and `safrochaind genesis validate`, and a clean `InitGenesis` simulation locally. The consensus pubkeys of the foundation validators are the **production** ed25519 keys held by the running daemons and sharded across the 3 Horcrux cosigners (2-of-3 threshold, one cluster per validator).
 
 ---
 
@@ -117,7 +113,7 @@ curl -fsSL -o genesis.json \
 
 # 2. Verify integrity
 shasum -a 256 genesis.json
-# Expected: 7cc3c5bbdcfb27e766eae5f302cb23b95d0ab94b0f1cee0e5adf747d224fb16b
+# Expected: cf5c6514dd6ba9ded66469aea8fd53fa452cfcd719a6e890b88ba9c0fc649eb8
 
 # 3. Validate against safrochaind
 mkdir -p ~/.safrochain/config
