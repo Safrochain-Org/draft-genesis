@@ -1,0 +1,48 @@
+{
+  "safro-validator-1": {
+    "pubkey": {
+      "@type": "/cosmos.crypto.ed25519.PubKey",
+      "key": "bLjFAV2NhrVj/c86XZd/c5TmI47wGET9+Af/WWPT6e4="
+    },
+    "description": {
+      "moniker": "safro-validator-1",
+      "identity": "",
+      "website": "",
+      "security_contact": "",
+      "details": ""
+    },
+    "commission": {
+      "rate": "0.100000000000000000",
+      "max_rate": "0.200000000000000000",
+      "max_change_rate": "0.010000000000000000"
+    },
+    "min_self_delegation": "1",
+    "value": {
+      "denom": "usaf",
+      "amount": "50000000000"
+    }
+  },
+  "safro-validator-2": {
+    "pubkey": {
+      "@type": "/cosmos.crypto.ed25519.PubKey",
+      "key": "t28fOBzCvii1I6deWPo/spymDrEj+nLog1iOj5PffbM="
+    },
+    "description": {
+      "moniker": "safro-validator-2",
+      "identity": "",
+      "website": "",
+      "security_contact": "",
+      "details": ""
+    },
+    "commission": {
+      "rate": "0.100000000000000000",
+      "max_rate": "0.200000000000000000",
+      "max_change_rate": "0.010000000000000000"
+    },
+    "min_self_delegation": "1",
+    "value": {
+      "denom": "usaf",
+      "amount": "50000000000"
+    }
+  }
+}
